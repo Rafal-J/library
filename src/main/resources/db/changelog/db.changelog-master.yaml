@@ -1,0 +1,111 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: rj
+      changes:
+        - createTable:
+            tableName: books
+            columns:
+              - column:
+                  name: book_id
+                  type: bigint(20)
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(255)
+              - column:
+                  name: author
+                  type: varchar(255)
+              - column:
+                  name: year_of_publishing
+                  type: int(11)
+  - changeSet:
+        id: 2
+        author: rj
+        changes:
+          - createTable:
+              tableName: readers
+              columns:
+                - column:
+                    name: reader_id
+                    type: bigint(20)
+                    autoIncrement: true
+                    constraints:
+                      primaryKey: true
+                      nullable: false
+                - column:
+                    name: first_name
+                    type: varchar(255)
+                - column:
+                    name: last_name
+                    type: varchar(255)
+                - column:
+                    name: created
+                    type: tinyblob
+  - changeSet:
+        id: 3
+        author: rj
+        changes:
+          - createTable:
+              tableName: specimens_of_book
+              columns:
+                - column:
+                    name: specimen_of_book_id
+                    type: bigint(20)
+                    autoIncrement: true
+                    constraints:
+                      primaryKey: true
+                      nullable: false
+                - column:
+                    name: status
+                    type: int(11)
+                - column:
+                    name: book_id
+                    type: bigint(20)
+          - addForeignKeyConstraint:
+              baseColumnNames: book_id
+              baseTableName: specimens_of_book
+              constraintName: book_id_books
+              referencedColumnNames: book_id
+              referencedTableName: books
+  - changeSet:
+        id: 4
+        author: rj
+        changes:
+          - createTable:
+              tableName: hires
+              columns:
+                - column:
+                    name: hire_id
+                    type: bigint(20)
+                    autoIncrement: true
+                    constraints:
+                      primaryKey: true
+                      nullable: false
+                - column:
+                    name: hire_date
+                    type: tinyblob
+                - column:
+                    name: return_date
+                    type: tinyblob
+                - column:
+                    name: reader_id
+                    type: bigint(20)
+                - column:
+                    name: specimen_of_book_id
+                    type: bigint(20)
+          - addForeignKeyConstraint:
+              baseColumnNames: reader_id
+              baseTableName: hires
+              constraintName: reader_id_readers
+              referencedColumnNames: reader_id
+              referencedTableName: readers
+          - addForeignKeyConstraint:
+              baseColumnNames: specimen_of_book_id
+              baseTableName: hires
+              constraintName: specimen_of_book_id_specimens_of_book
+              referencedColumnNames: specimen_of_book_id
+              referencedTableName: specimens_of_book
