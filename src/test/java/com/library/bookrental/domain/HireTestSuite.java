@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.Column;
@@ -18,6 +19,7 @@ import java.time.LocalDate;
 
 import static org.junit.Assert.*;
 
+@ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class HireTestSuite {
@@ -34,7 +36,7 @@ public class HireTestSuite {
     BookDao bookDao;
 
     @Test
-    public void hireTest () {
+    public void hireTest() {
         //Given
         Book book = new Book("Spod przymarzniętych powiek", "Adam Bielecki", 2017);
         bookDao.save(book);
