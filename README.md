@@ -2,7 +2,7 @@
 - aplikacja wymaga do działania bazy danych SQL (jest kompatybilna z MySQL)
 - testy aplikacji są przeprowadzane z użyciem bazy danych H2
 
-2. Zbiór requestów do Postmana, umożliwiających przetestowanie kontrolerów restowych oraz wygenerowanie testowych danych znajduje się w pliku Library.postman_collection.json.
+2. Zbiór requestów do Postmana, umożliwiających przetestowanie kontrolerów restowych oraz wygenerowanie testowych danych znajduje się w katalogu src/test/resources w pliku Library.postman_collection.json.
 - dokumentacja kontrolerów restowych jest dostępna po uruchomieniu aplikacji pod adresem http://localhost:8080/swagger-ui.html 
 
 
